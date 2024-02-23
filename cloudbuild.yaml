@@ -21,7 +21,6 @@ steps:
   
   # Create a subscription to Pub/Sub topic for build notifications
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'gcloud'
     args: ['pubsub', 'topics', 'publish', 'projects/steady-cat-401619/subscriptions/midterm-sub', '--message', 'Deployment completed.']
  
 options:
