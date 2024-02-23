@@ -5,6 +5,19 @@ steps:
   # Push the Docker image to the artifact registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/steady-cat-401619/midterm/python-demo:${COMMIT_SHA}']
+
+  # Deploy the Docker container to Google Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'sh'
+    args: 
+      - '-c'
+      - |
+        gcloud run deploy nodejs-app \
+          --image=us-central1-docker.pkg.dev/steady-cat-401619/midterm/python-demo:${COMMIT_SHA} \
+          --platform=managed \
+          --region=us-central1 \
+          --port=8080 \
+          --allow-unauthenticated
  
  
 options:
