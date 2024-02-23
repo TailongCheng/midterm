@@ -1,0 +1,43 @@
+# Name: Tailong Cheng
+# ID: 100898513
+# https://github.com/docker/docker-nodejs-sample
+
+# Part I of Assignment 1
+services:
+  server:
+    build:
+      context: .
+    environment:
+#     NODE_ENV: production
+      POSTGRES_DB: labonedb
+      POSTGRES_PASSWORD: tailong100898513
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+    ports:
+      - 3000:3000
+
+# Part II of Assignment 1
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres
+    user: postgres
+    volumes:
+      - db-data: /var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: labonedb
+      POSTGRES_PASSWORD: tailong100898513
+    expose:
+      - 5432
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
+
+
