@@ -12,4 +12,4 @@ RUN pip install Flask
  
 # Expose port 8080 for the application
 EXPOSE 8080
-CMD ["python", "midterm.py"]
+CMD ["python", "Demo.py"]
