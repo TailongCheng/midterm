@@ -7,10 +7,17 @@ app = Flask(__name__)
 # App route created as per requirements.
 @app.route('/')
 def index():
-    name_of_company = "Wild Rydes"
+    name_of_company = "<strong>Wild Rydes</strong>"
     developer_name = "Tailong Cheng"
     student_id = "100898513"
-    return f"Company Name: {name_of_company}<br>Developer: {developer_name}<br>Student ID: {student_id}"
+    
+    # Create HTML with centered and styled content.
+    html_content = f"<div style='text-align: center; padding-top: 20px;'>" \
+                   f"<p>Company Name: {name_of_company}<br>" \
+                   f"Developer: {developer_name}<br>" \
+                   f"Student ID: {student_id}</p></div>"
+    
+    return html_content
  
 # Run it on port 8080 on local host.
 if __name__ == '__main__':
