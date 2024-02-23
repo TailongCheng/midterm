@@ -5,7 +5,7 @@ FROM python:3.8-slim
 WORKDIR /Demo
  
 # Copy the source python file to my current working directory.
-COPY midterm.py .
+COPY Demo.py .
  
 # Run command to ensure the Flask framework is present in the container.
 RUN pip install Flask
