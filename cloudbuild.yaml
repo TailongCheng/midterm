@@ -12,7 +12,7 @@ steps:
     args: 
       - '-c'
       - |
-        gcloud run deploy nodejs-app \
+        gcloud run deploy demo-python \
           --image=us-central1-docker.pkg.dev/steady-cat-401619/midterm/python-demo:${COMMIT_SHA} \
           --platform=managed \
           --region=us-central1 \
