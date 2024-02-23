@@ -2,7 +2,7 @@
 FROM python:3.8-slim
  
 # Set the working directory
-WORKDIR /app
+WORKDIR /Demo
  
 # Copy the source python file to my current working directory.
 COPY midterm.py .
