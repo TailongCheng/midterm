@@ -1,29 +1,17 @@
-# Use the node:19.7.0-alpine base image.
-FROM node:19.7.0-alpine
-
-# Set the environment variable NODE_ENV with a value of production.
-ENV NODE_ENV production
-
-# Create a new directory in root called labone 
-RUN mkdir /labone
-
-# Change the ownership to the node user and node group.
-RUN chown -R node:node /labone
-
-# Set this new folder as the working directory.
-WORKDIR /labone
-
-# Set the user to node.
-USER node
-
-# Copy all source files and change the file ownership to the node user and node group.
-COPY --chown=node:node . /labone
-
-# Run the npm install command to install your node.js packages
-RUN npm install
-
-# Expose port 3000.
-EXPOSE 3000
-
-# Set the default execution command to node src/index.js
-CMD ["node", "src/index.js"]
+# Import flask module to render the application.
+from flask import Flask
+ 
+# Create an app.
+app = Flask(__name__)
+ 
+# App route created as per requirements.
+@app.route('/')
+def index():
+    name_of_company = "Wild Rydes"
+    developer_name = "Tailong Cheng"
+    student_id = "100898513"
+    return f"Company Name: {name_of_company}<br>Developer: {developer_name}<br>Student ID: {student_id}"
+ 
+# Run it on port 8080 on local host.
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8080)
