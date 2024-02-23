@@ -1,17 +1,15 @@
-# Import flask module to render the application.
-from flask import Flask
+# Import the python module
+FROM python:3.8-slim
  
-# Create an app.
-app = Flask(__name__)
+# Set the working directory
+WORKDIR /app
  
-# App route created as per requirements.
-@app.route('/')
-def index():
-    name_of_company = "Wild Rydes"
-    developer_name = "Tailong Cheng"
-    student_id = "100898513"
-    return f"Company Name: {name_of_company}<br>Developer: {developer_name}<br>Student ID: {student_id}"
+# Copy the source python file to my current working directory.
+COPY midterm.py .
  
-# Run it on port 8080 on local host.
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+# Run command to ensure the Flask framework is present in the container.
+RUN pip install Flask
+ 
+# Expose port 8080 for the application
+EXPOSE 8080
+CMD ["python", "midterm.py"]
