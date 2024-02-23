@@ -18,7 +18,14 @@ steps:
           --region=us-central1 \
           --port=8080 \
           --allow-unauthenticated
- 
+  
+  # Create a subscription to Pub/Sub topic for build notifications
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud pubsub subscriptions create demo-subscription --topic=cloud-builds
  
 options:
   # Set defaultLogsBucketBehavior to REGIONAL_USER_OWNED_BUCKET
