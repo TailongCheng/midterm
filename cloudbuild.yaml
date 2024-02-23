@@ -25,7 +25,7 @@ steps:
     args:
       - '-c'
       - |
-        gcloud pubsub subscriptions create demo-subscription --topic=cloud-builds
+        gcloud pubsub subscriptions create midterm-sub --topic=midterm
  
 options:
   # Set defaultLogsBucketBehavior to REGIONAL_USER_OWNED_BUCKET
